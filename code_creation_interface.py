@@ -1,14 +1,18 @@
+import numpy as np
 import wx
 import os
 
 class MaFenetre(wx.Frame):    
-    def __init__(self):
+    def __init__(self, ligne, colonne):
         chemin_script = os.path.dirname(os.path.realpath(__file__))
         super().__init__(parent=None, title='Ma fenêtre avec BitmapButton')
         self.bmp1 = wx.Bitmap("H:\semestre4\POO\PROJET\\Orange.png", wx.BITMAP_TYPE_PNG) 
         self.bmp2 = wx.Bitmap("H:\semestre4\POO\PROJET\\Rouge.png", wx.BITMAP_TYPE_PNG) 
-        nb_boutons = 100
-        self.ma_grille = wx.GridSizer(rows=10, cols=10, vgap=0, hgap=0)
+        self.ligne= ligne
+        self.colonne= colonne
+        self.plateau = np.zeros((ligne,colonne),np.int32)
+        nb_boutons = self.plateau.shape[0]*self.plateau.shape[1]
+        self.ma_grille = wx.GridSizer(rows=ligne, cols=colonne, vgap=0, hgap=0)
         font = wx.Font(10, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL,
             wx.FONTWEIGHT_BOLD)
         self.etat_bouton = None
@@ -37,5 +41,5 @@ class MaFenetre(wx.Frame):
        
 if __name__ == '__main__':
     app = wx.App()
-    frame = MaFenetre()
+    frame = MaFenetre(5,5)
     app.MainLoop()
