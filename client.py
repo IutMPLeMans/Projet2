@@ -1,6 +1,6 @@
 import socket
 
-hote = "localhost"
+hote = "172.16.177.31"
 port = 12800
 
 connexion_avec_serveur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
