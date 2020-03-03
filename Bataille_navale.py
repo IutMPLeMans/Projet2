@@ -1,5 +1,5 @@
 import numpy as np
-#creation du plateau
+#création du plateau
 class Plateau:
     def __init__(self,ligne,colonne):
         self.ligne= ligne
@@ -12,13 +12,13 @@ p=Plateau(10,10)
 print(p)
 #Placement bateau PorteAvion
 for k in range(5):
-    print("placez 1ere coordonnee du PorteAvion (ligne,colonne)")
+    print("placez 1ere coordonée du PorteAvion (ligne,colonne)")
     x1=int(input())
     y1=int(input())
     print("vous avez choisi la case : ",x1,y1)
     """
-    Faire la classe placer_bateau : soit creation case par case ou le bateau directement avec les parametres x et y (premier point)
+    Faire la classe placer_bateau : soit création case par case ou le bateau directement avec les paramètres x et y (premier point)
     et direction (vertical ou horizontal)
     """
-    #p.placer_bateau(x1,y1)=5 #chaque type de bateau prend une valeur differente dans la matrice (si plus de 5 touche coule)
+    p.placer_bateau(x1,y1)=5 #chaque type de bateau prend une valeur différente dans la matrice (si plus de 5 touché coulé)
     print(p)
