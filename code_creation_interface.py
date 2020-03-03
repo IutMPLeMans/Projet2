@@ -41,5 +41,5 @@ class MaFenetre(wx.Frame):
        
 if __name__ == '__main__':
     app = wx.App()
-    frame = MaFenetre(10,10)
+    frame = MaFenetre(5,5)
     app.MainLoop()
