@@ -18,13 +18,15 @@ class MaFenetre(wx.Frame):
         barre_menu = wx.MenuBar()
         menu_fichier = wx.Menu()
         article_porteavion = menu_fichier.Append(1000, 'Porte-Avion')
-        article_sousmarin = menu_fichier.Append(1001, 'Sous Marin')
-        article_torpilleur = menu_fichier.Append(1002, 'Torpilleur')
-        article_croiseur = menu_fichier.Append(1003, 'Croiseur')
+        article_sousmarin1 = menu_fichier.Append(1001, 'Premier Sous Marin')
+        article_sousmarin2 = menu_fichier.Append(1002, 'Deuxième Sous Marin')
+        article_torpilleur = menu_fichier.Append(1003, 'Torpilleur')
+        article_croiseur = menu_fichier.Append(1004, 'Croiseur')
         barre_menu.Append(menu_fichier, '&Fichier')
         self.SetMenuBar(barre_menu)
         self.Bind(wx.EVT_MENU, self.Onporteavion, article_porteavion)
-        self.Bind(wx.EVT_MENU, self.Onsousmarin, article_sousmarin)
+        self.Bind(wx.EVT_MENU, self.Onsousmarin1, article_sousmarin1)
+        self.Bind(wx.EVT_MENU, self.Onsousmarin2, article_sousmarin2)
         self.Bind(wx.EVT_MENU, self.Ontorpilleur, article_torpilleur)
         self.Bind(wx.EVT_MENU, self.Oncroiseur, article_croiseur)
         self.Bind(wx.EVT_PAINT, self.OnPaint)
@@ -87,7 +89,24 @@ class MaFenetre(wx.Frame):
             event.GetEventObject().Enable(event.GetId(), False)
         self.Refresh(True)
         
-    def Onsousmarin(self, event):
+    def Onsousmarin1(self, event):
+        s = wx.TextEntryDialog(self,'Ligne','Entrez la ligne la plus en haut du Sous-Marin',value='0')
+        s.ShowModal()
+        lig = int(s.GetValue())
+
+        s = wx.TextEntryDialog(self,'Colonne','Entrez la colonne la plus à gauche du Sous-Marin',value='0')
+        s.ShowModal()
+        col = int(s.GetValue())
+
+        s = wx.TextEntryDialog(self,'Direction','0 =  Horizontal   1 = Vertical',value='0')
+        s.ShowModal()
+        direction = int(s.GetValue())
+       
+        if self.plateau.placer_bateau(lig,col,3,direction):
+            event.GetEventObject().Enable(event.GetId(), False)
+        self.Refresh(True)
+
+    def Onsousmarin2(self, event):
         s = wx.TextEntryDialog(self,'Ligne','Entrez la ligne la plus en haut du Sous-Marin',value='0')
         s.ShowModal()
         lig = int(s.GetValue())
